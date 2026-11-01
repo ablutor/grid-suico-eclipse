@@ -1,5 +1,5 @@
 /* Eclipse
-   Tipografia branca. A cor ativa (ponto, destaque, botão e grid) é #474963. */
+   Tipografia branca. A cor ativa (ponto, destaque, botão e grid) é #000. */
 
 :root,
 [data-cor="original"],
@@ -8,7 +8,7 @@
 [data-cor="feminino-2"] {
   --bg: #ebe9e4;
   --ink: #fff;
-  --ac: #474963;
+  --ac: #000;
 }
 
 /* Escala do palco desktop, para prender a marca d'água num ponto do desenho */
@@ -16,7 +16,7 @@
   --esc: min(100vw / 1920, 100vh / 900);
   --xs-capa: var(--ink);
   --xs-marca-cor: var(--ink);
-  --xs-marca-destaque: var(--ac);
+  --xs-marca-destaque: #fff;
 }
 
 html,
@@ -128,7 +128,7 @@ h1 {
   display: grid;
   place-items: center;
   flex: none;
-  background: var(--ac);
+  background: none;
   color: var(--ink);
 }
 
