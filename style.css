@@ -1,0 +1,324 @@
+/* Modelo 21 · Eclipse
+   Cores: original (vermelho), masculino (azul royal), feminino (rosa)
+   e feminino-2 (lilás). Este modelo não tem versões pastel. */
+
+:root,
+[data-cor="original"]   { --bg: #ebe9e4; --ink: #111; --ac: #e63312; }
+[data-cor="masculino"]  { --bg: #e7e9ec; --ink: #111; --ac: #1f4fd6; }
+[data-cor="feminino"]   { --bg: #f4e9ea; --ink: #111; --ac: #e83e8c; }
+[data-cor="feminino-2"] { --bg: #ece8f3; --ink: #111; --ac: #7b4fe0; }
+
+/* Escala do palco desktop, para prender a marca d'água num ponto do desenho */
+:root {
+  --esc: min(100vw / 1920, 100vh / 900);
+  --xs-capa: var(--ink);
+  --xs-marca-cor: var(--ink);
+  --xs-marca-destaque: var(--ac);
+}
+
+html,
+body {
+  background: #c5c8cc url("fundo.png") center / cover no-repeat;
+}
+
+body {
+  color: var(--ink);
+  font-family: "Inter Tight", system-ui, sans-serif;
+}
+
+.red { color: var(--ac); }
+
+.serif,
+.q { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+
+/* Colunas do grid; somem nas pontas de cima e de baixo,
+   porque em telas de outro formato o palco não encosta na borda da tela */
+.grid {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: grid;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(180deg, transparent, #000 8%, #000 92%, transparent);
+  mask: linear-gradient(180deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.grid i {
+  border-left: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.hr {
+  position: absolute;
+  height: 2px;
+  background: var(--ink);
+}
+
+.hr.fino { height: 1px; }
+
+.foot {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+h1 {
+  position: absolute;
+  font-weight: 800;
+  letter-spacing: -.06em;
+  line-height: .8;
+  white-space: nowrap;
+}
+
+.photo {
+  position: absolute;
+  overflow: hidden;
+  filter: grayscale(1) contrast(1.15);
+}
+
+.photo .quadro {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 25%;
+  transition: opacity 1.15s ease;
+}
+
+.photo .quadro + .quadro { opacity: 0; }
+.photo.trocada .quadro + .quadro { opacity: 1; }
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--ac);
+}
+
+.q em { font-style: italic; }
+
+.n { display: block; font-weight: 700; }
+
+.player {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.play {
+  display: grid;
+  place-items: center;
+  flex: none;
+  background: var(--ac);
+  color: #fff;
+}
+
+.player .info { min-width: 0; }
+
+.player b {
+  display: block;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player .info span { opacity: .6; }
+
+.pg {
+  margin-left: auto;
+  font-weight: 800;
+  letter-spacing: -.04em;
+}
+
+/* Progresso da música numa linha fina no pé do player */
+.player .bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+}
+
+.player .bar span {
+  display: block;
+  height: 3px;
+  background: var(--ac);
+}
+
+/* ---------- Desktop ---------- */
+
+.desk { width: 1920px; }
+
+.desk .grid {
+  left: 60px;
+  right: 60px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.desk .hr { left: 60px; right: 60px; }
+
+.desk .foot {
+  left: 60px;
+  right: 60px;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+
+.desk .foot.topo { top: 30px; }
+.desk .foot.baixo { bottom: 40px; }
+
+.desk h1 {
+  left: 52px;
+  top: 96px;
+  font-size: 250px;
+}
+
+.desk .photo {
+  left: 1302px;
+  top: 96px;
+  width: 558px;
+  height: 500px;
+}
+
+.desk .dot {
+  left: 1820px;
+  top: 110px;
+  width: 26px;
+  height: 26px;
+}
+
+.desk .q {
+  position: absolute;
+  left: 60px;
+  top: 640px;
+  width: 610px;
+  font-size: 40px;
+  line-height: 1.05;
+}
+
+.desk .cell {
+  position: absolute;
+  top: 640px;
+  width: 160px;
+  font-size: 15px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.desk .cell .n { font-size: 12px; margin-bottom: 10px; }
+.desk .cell b { font-weight: 500; }
+.desk .cell .lista { display: block; white-space: pre-line; }
+
+.desk .player {
+  left: 1302px;
+  top: 640px;
+  width: 558px;
+  gap: 16px;
+  padding: 16px;
+}
+
+.desk .play { width: 44px; height: 44px; }
+.desk .play svg { width: 18px; height: 18px; }
+.desk .player b { font-size: 15px; }
+.desk .player .info span { font-size: 12px; }
+.desk .pg { font-size: 40px; }
+
+/* A marca d'água fica embaixo do player, presa ao desenho do palco */
+html:not(.xs-mobile) .xs-marca {
+  --xs-marca-direita: calc((100vw - 1920 * var(--esc)) / 2 + 60 * var(--esc));
+  --xs-marca-baixo: calc((100vh - 900 * var(--esc)) / 2 + 92 * var(--esc));
+}
+
+/* ---------- Mobile ---------- */
+
+.mob { width: 390px; }
+
+.mob .grid {
+  left: 20px;
+  right: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.mob .hr { left: 20px; right: 20px; }
+
+.mob .foot {
+  left: 20px;
+  right: 20px;
+  font-size: 9.5px;
+  letter-spacing: .05em;
+}
+
+.mob .foot.topo { top: 18px; }
+.mob .foot.baixo { bottom: 16px; }
+
+.mob h1 {
+  left: 16px;
+  top: 58px;
+  font-size: 96px;
+}
+
+.mob .photo {
+  left: 20px;
+  right: 20px;
+  top: 240px;
+  height: 280px;
+}
+
+.mob .photo .quadro { background-position: center 22%; }
+
+.mob .dot {
+  right: 30px;
+  top: 252px;
+  width: 18px;
+  height: 18px;
+}
+
+.mob .q {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 540px;
+  font-size: 25px;
+  line-height: 1.05;
+}
+
+.mob .cells {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 630px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--ink);
+  font-size: 12px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.mob .cells .n { font-size: 9.5px; margin-bottom: 5px; }
+
+.mob .player {
+  left: 20px;
+  right: 20px;
+  bottom: 44px;
+  gap: 12px;
+  padding: 10px;
+}
+
+.mob .play { width: 38px; height: 38px; }
+.mob .play svg { width: 16px; height: 16px; }
+.mob .player b { font-size: 13px; }
+.mob .player .info span { font-size: 10.5px; }
+.mob .pg { font-size: 28px; }
+
+/* No celular a marca fica entre as informações e o player (topo em px do palco × escala) */
+.xs-mobile { --xs-marca-topo-mobile: calc(700 * 100vw / 390); }
+.xs-mobile .xs-marca { right: calc(20 * 100vw / 390); }
