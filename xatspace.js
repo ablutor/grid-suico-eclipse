@@ -193,7 +193,7 @@
         document.body.style.height = "";
         var marca = document.querySelector(".xs-marca");
         if (marca) {
-          marca.style.top = topo + 12 * e + "px";
+          marca.style.top = topo + 48 * e + 10 + "px";
           marca.style.right = esquerda + 16 * e + "px";
           marca.style.bottom = "auto";
         }

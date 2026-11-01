@@ -327,13 +327,13 @@ html:not(.xs-mobile) .xs-marca {
 /* No celular a página não rola: o palco já cabe na tela */
 .xs-mobile body { overflow: hidden; }
 
-/* No celular a marca fica no canto de cima, à direita do palco */
+/* No celular a marca fica à direita, logo abaixo da borda de cima */
 .xs-mobile {
   --esc-mob: min(100vw / 390, 100vh / 844);
 }
 
 .xs-mobile .xs-marca {
-  top: calc((100vh - 844 * var(--esc-mob)) / 2 + 12 * var(--esc-mob));
+  top: calc((100vh - 844 * var(--esc-mob)) / 2 + 48 * var(--esc-mob) + 10px);
   bottom: auto;
   right: calc((100vw - 390 * var(--esc-mob)) / 2 + 16 * var(--esc-mob));
 }
