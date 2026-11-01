@@ -57,4 +57,33 @@ Xatspace.aoCarregar(function (d) {
       todos(".photo", function (el) { el.classList.toggle("trocada"); });
     }, 3000);
   }
+
+  statusNoXat(d);
 });
+
+// Consulta o status no xat pelo nome ou ID.
+// Sem nome, ou se o usuário não existe, o status não aparece.
+function statusNoXat(d) {
+  if (!d.xat) return;
+  fetch("https://api.xatblog.net/onlinecheck/" + encodeURIComponent(d.xat))
+    .then(function (r) { return r.json(); })
+    .then(function (res) {
+      if (!res || res.code !== 200) return;
+      var estado = String(res.status || "").toLowerCase();
+      if (estado !== "online" && estado !== "offline") return;
+      document.querySelectorAll("[data-xs-se='online']").forEach(function (el) {
+        if (estado === "offline") marcarOffline(el);
+        el.hidden = false;
+      });
+    })
+    .catch(function () {});
+}
+
+function marcarOffline(el) {
+  var textos = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  var pedaco;
+  while ((pedaco = textos.nextNode())) {
+    pedaco.nodeValue = pedaco.nodeValue.replace(/\bonline\b/gi, "offline");
+  }
+  el.classList.add("xs-off");
+}

@@ -6,9 +6,10 @@ Xatspace.cliente({
   nome: "Eclipse",
   sobrenome: "",
   frase: "I'M LIKE SOME KIND OF SUPERNOVA, WATCH OUT!",
-  local: "Recife - Crema",
+  local: "Recife/Crema",
   gostos: ["Criar Galinhas", "Música", "Costura", "Ler"],
   pinterest: "ecll1pse",
+  xat: "ECL1",
   online: false,
 
   fotos: {

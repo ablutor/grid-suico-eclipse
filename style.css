@@ -31,6 +31,9 @@ body {
 
 .red { color: var(--ac); }
 
+[data-xs-se="online"] { color: #1ec96a; }
+[data-xs-se="online"].xs-off { color: #ff3b30; }
+
 .serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
 
 .q {
@@ -108,7 +111,19 @@ h1 {
 
 .q em { font-style: italic; }
 
-.n { display: block; font-weight: 700; }
+.n {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.n .ico {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: #000;
+}
 
 .player {
   position: absolute;
@@ -292,6 +307,7 @@ html:not(.xs-mobile) .xs-marca {
 }
 
 .mob .cells .n { font-size: 9.5px; margin-bottom: 5px; }
+.mob .n .ico { width: 11px; height: 11px; }
 .mob .cells:not(:has(> :not([hidden]) ~ :not([hidden]))) > :not([hidden]) { grid-column: 1 / -1; }
 
 .mob .player {
@@ -306,6 +322,6 @@ html:not(.xs-mobile) .xs-marca {
 .mob .play svg { width: 16px; height: 16px; }
 .mob .player b { font-size: 13px; }
 .mob .player .info span { font-size: 10.5px; }
-/* No celular a marca fica entre as informações e o player (topo em px do palco × escala) */
-.xs-mobile { --xs-marca-topo-mobile: calc(700 * 100vw / 390); }
-.xs-mobile .xs-marca { right: calc(20 * 100vw / 390); }
+/* No celular a marca fica no canto de cima, à direita, na faixa do topo */
+.xs-mobile { --xs-marca-topo-mobile: calc(6 * 100vw / 390); }
+.xs-mobile .xs-marca { right: calc(16 * 100vw / 390); }
