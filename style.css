@@ -1,5 +1,5 @@
 /* Eclipse
-   Tipografia branca. A cor ativa (ponto, destaque, botão e grid) é #000. */
+   Tipografia branca. A cor ativa (destaque, botão e grid) é #000. */
 
 :root,
 [data-cor="original"],
@@ -106,12 +106,6 @@ h1 {
 .photo .quadro + .quadro { opacity: 0; }
 .photo.trocada .quadro + .quadro { opacity: 1; }
 
-.dot {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--ac);
-}
-
 .q em { font-style: italic; }
 
 .n { display: block; font-weight: 700; }
@@ -195,13 +189,6 @@ h1 {
   height: 500px;
 }
 
-.desk .dot {
-  left: 1820px;
-  top: 110px;
-  width: 26px;
-  height: 26px;
-}
-
 .desk .q {
   position: absolute;
   left: 60px;
@@ -279,13 +266,6 @@ html:not(.xs-mobile) .xs-marca {
 }
 
 .mob .photo .quadro { background-position: center 22%; }
-
-.mob .dot {
-  right: 30px;
-  top: 252px;
-  width: 18px;
-  height: 18px;
-}
 
 .mob .q {
   position: absolute;
