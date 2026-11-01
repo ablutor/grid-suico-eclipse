@@ -1,5 +1,5 @@
 /* Eclipse
-   Texto branco. A cor ativa (ponto, destaque e botão) é #474963. */
+   Tipografia branca. A cor ativa (ponto, destaque, botão e grid) é #474963. */
 
 :root,
 [data-cor="original"],
@@ -31,8 +31,13 @@ body {
 
 .red { color: var(--ac); }
 
-.serif,
-.q { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+.serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+
+.q {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+}
 
 /* Colunas do grid; somem nas pontas de cima e de baixo,
    porque em telas de outro formato o palco não encosta na borda da tela */
@@ -47,14 +52,14 @@ body {
 }
 
 .grid i {
-  border-left: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
-  border-right: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--ac) 32%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--ac) 32%, transparent);
 }
 
 .hr {
   position: absolute;
   height: 2px;
-  background: var(--ink);
+  background: color-mix(in srgb, var(--ac) 40%, transparent);
 }
 
 .hr.fino { height: 1px; }
@@ -66,6 +71,14 @@ body {
   gap: 30px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.foot .cit {
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: pre-line;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 h1 {
@@ -108,7 +121,7 @@ h1 {
   display: flex;
   align-items: center;
   background: #14151c;
-  color: #fff;
+  color: var(--ink);
 }
 
 .play {
@@ -116,7 +129,7 @@ h1 {
   place-items: center;
   flex: none;
   background: var(--ac);
-  color: #fff;
+  color: var(--ink);
 }
 
 .player .info { min-width: 0; }
@@ -130,12 +143,6 @@ h1 {
 }
 
 .player .info span { opacity: .6; }
-
-.pg {
-  margin-left: auto;
-  font-weight: 800;
-  letter-spacing: -.04em;
-}
 
 /* Progresso da música numa linha fina no pé do player */
 .player .bar {
@@ -173,7 +180,7 @@ h1 {
 }
 
 .desk .foot.topo { top: 30px; }
-.desk .foot.baixo { bottom: 40px; }
+.desk .foot.baixo { bottom: 18px; }
 
 .desk h1 {
   left: 52px;
@@ -229,8 +236,6 @@ h1 {
 .desk .play svg { width: 18px; height: 18px; }
 .desk .player b { font-size: 15px; }
 .desk .player .info span { font-size: 12px; }
-.desk .pg { font-size: 40px; }
-
 /* A marca d'água fica embaixo do player, presa ao desenho do palco */
 html:not(.xs-mobile) .xs-marca {
   --xs-marca-direita: calc((100vw - 1920 * var(--esc)) / 2 + 60 * var(--esc));
@@ -297,16 +302,17 @@ html:not(.xs-mobile) .xs-marca {
   right: 20px;
   top: 630px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 12px;
   padding-top: 10px;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid color-mix(in srgb, var(--ac) 40%, transparent);
   font-size: 12px;
   line-height: 1.35;
   overflow-wrap: anywhere;
 }
 
 .mob .cells .n { font-size: 9.5px; margin-bottom: 5px; }
+.mob .cells:not(:has(> :not([hidden]) ~ :not([hidden]))) > :not([hidden]) { grid-column: 1 / -1; }
 
 .mob .player {
   left: 20px;
@@ -320,8 +326,6 @@ html:not(.xs-mobile) .xs-marca {
 .mob .play svg { width: 16px; height: 16px; }
 .mob .player b { font-size: 13px; }
 .mob .player .info span { font-size: 10.5px; }
-.mob .pg { font-size: 28px; }
-
 /* No celular a marca fica entre as informações e o player (topo em px do palco × escala) */
 .xs-mobile { --xs-marca-topo-mobile: calc(700 * 100vw / 390); }
 .xs-mobile .xs-marca { right: calc(20 * 100vw / 390); }

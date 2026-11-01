@@ -91,6 +91,7 @@
     d.nomeCompleto = (nome + " " + sobrenome).trim();
     d.iniciais = (nome.charAt(0) + sobrenome.charAt(0)).toUpperCase();
     d.instagramUrl = d.instagram ? "https://instagram.com/" + d.instagram : "";
+    d.pinterestUrl = d.pinterest ? "https://www.pinterest.com/" + d.pinterest + "/" : "";
     d.gostos = d.gostos || [];
     d.fotos = d.fotos || {};
     d.musica = d.musica || {};

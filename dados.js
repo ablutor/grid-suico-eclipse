@@ -5,10 +5,10 @@ Xatspace.cliente({
 
   nome: "Eclipse",
   sobrenome: "",
-  frase: "",
-  local: "",
-  gostos: [],
-  instagram: "",
+  frase: "I'M LIKE SOME KIND OF SUPERNOVA, WATCH OUT!",
+  local: "Recife - Crema",
+  gostos: ["Criar Galinhas", "Música", "Costura", "Ler"],
+  pinterest: "ecll1pse",
   online: false,
 
   fotos: {
@@ -16,10 +16,14 @@ Xatspace.cliente({
     perfil2: "perfil-2.jpg"
   },
 
+  ano: "2001",
+
   citacao: {
-    texto: "",
-    autor: ""
+    texto: "Bring the light of a dying star\n불러낸 내 우주를 봐봐, supernova.",
+    autor: "æspa"
   },
 
-  musica: {}
+  musica: {
+    playlist: "PLVu6LJfi0jOk"
+  }
 });

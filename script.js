@@ -4,9 +4,8 @@ Xatspace.aoCarregar(function (d) {
     Array.prototype.forEach.call(document.querySelectorAll(sel), fn);
   };
 
-  // Ano atual
   todos("[data-xs-ano]", function (el) {
-    el.textContent = new Date().getFullYear();
+    el.textContent = d.ano || "2001";
   });
 
   // Autor da citação abreviado: "Mario Quintana" vira "M. Quintana"
@@ -18,17 +17,22 @@ Xatspace.aoCarregar(function (d) {
   });
   if (!d.citacao.texto) todos(".foot .cit", function (el) { el.hidden = true; });
 
-  // Frase com a última palavra em itálico na cor de destaque
+  // Frase em destaque: a palavra supernova fica na cor ativa
   todos(".q", function (el) {
     var frase = (d.frase || "").trim();
-    var i = frase.lastIndexOf(" ");
-    el.textContent = i > 0 ? frase.slice(0, i + 1) : "";
+    var alvo = "supernova";
+    var i = frase.toLowerCase().indexOf(alvo);
+    el.textContent = "";
+    if (i < 0) {
+      el.textContent = frase;
+      return;
+    }
+    el.appendChild(document.createTextNode(frase.slice(0, i)));
     var destaque = document.createElement("span");
     destaque.className = "red";
-    var em = document.createElement("em");
-    em.textContent = i > 0 ? frase.slice(i + 1) : frase;
-    destaque.appendChild(em);
+    destaque.textContent = frase.slice(i, i + alvo.length);
     el.appendChild(destaque);
+    el.appendChild(document.createTextNode(frase.slice(i + alvo.length)));
   });
 
   // Frases longas diminuem para não passar da linha de baixo
