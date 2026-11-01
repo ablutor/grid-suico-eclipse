@@ -182,14 +182,13 @@
       if (ehMobile !== mobile) return;
 
       if (ehMobile) {
-        // No celular ocupa a largura toda e cresce para baixo se precisar
-        var e = w / pw;
-        var altura = Math.max(ph, h / e);
-        palco.style.height = altura + "px";
+        // Cabe na tela inteira: encolhe pela largura ou pela altura, o que limitar primeiro
+        var e = Math.min(w / pw, h / ph);
+        palco.style.height = ph + "px";
         palco.style.transform = "scale(" + e + ")";
-        palco.style.left = "0px";
-        palco.style.top = "0px";
-        document.body.style.height = altura * e + "px";
+        palco.style.left = (w - pw * e) / 2 + "px";
+        palco.style.top = (h - ph * e) / 2 + "px";
+        document.body.style.height = "";
       } else {
         var esc = Math.min(w / pw, h / ph);
         palco.style.height = ph + "px";

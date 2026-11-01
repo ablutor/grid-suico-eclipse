@@ -319,6 +319,9 @@ html:not(.xs-mobile) .xs-marca {
 .mob .play svg { width: 16px; height: 16px; }
 .mob .player b { font-size: 13px; }
 .mob .player .info span { font-size: 10.5px; }
+/* No celular a página não rola: o palco já cabe na tela */
+.xs-mobile body { overflow: hidden; }
+
 /* No celular a marca fica no canto de baixo, à direita */
 .xs-mobile .xs-marca {
   top: auto;
