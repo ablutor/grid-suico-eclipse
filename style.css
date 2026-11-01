@@ -262,11 +262,11 @@ html:not(.xs-mobile) .xs-marca {
 }
 
 .mob .foot.topo { top: 18px; }
-.mob .foot.baixo { bottom: 16px; padding-right: 40px; }
+.mob .foot.baixo { bottom: 8px; padding-right: 40px; }
 
 .mob h1 {
   left: 16px;
-  top: 58px;
+  top: 82px;
   font-size: 96px;
 }
 
@@ -293,9 +293,10 @@ html:not(.xs-mobile) .xs-marca {
   left: 20px;
   right: 20px;
   top: 630px;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
   padding-top: 10px;
   border-top: 1px solid color-mix(in srgb, var(--ac) 40%, transparent);
   font-size: 12px;
@@ -303,6 +304,10 @@ html:not(.xs-mobile) .xs-marca {
   overflow-wrap: anywhere;
 }
 
+.mob .cells > div:nth-child(2) { text-align: center; }
+.mob .cells > div:nth-child(2) .n { justify-content: center; }
+.mob .cells > div:nth-child(3) { text-align: right; }
+.mob .cells > div:nth-child(3) .n { justify-content: flex-end; }
 .mob .cells .n { font-size: 9.5px; margin-bottom: 5px; }
 .mob .n .ico { width: 11px; height: 11px; }
 .mob .cells:not(:has(> :not([hidden]) ~ :not([hidden]))) > :not([hidden]) { grid-column: 1 / -1; }
@@ -322,9 +327,13 @@ html:not(.xs-mobile) .xs-marca {
 /* No celular a página não rola: o palco já cabe na tela */
 .xs-mobile body { overflow: hidden; }
 
-/* No celular a marca fica no canto de baixo, à direita */
+/* No celular a marca fica no canto de cima, à direita do palco */
+.xs-mobile {
+  --esc-mob: min(100vw / 390, 100vh / 844);
+}
+
 .xs-mobile .xs-marca {
-  top: auto;
-  bottom: calc(12 * 100vw / 390);
-  right: calc(16 * 100vw / 390);
+  top: calc((100vh - 844 * var(--esc-mob)) / 2 + 12 * var(--esc-mob));
+  bottom: auto;
+  right: calc((100vw - 390 * var(--esc-mob)) / 2 + 16 * var(--esc-mob));
 }
