@@ -31,9 +31,6 @@ body {
 
 .red { color: var(--ac); }
 
-[data-xs-se="online"] { color: #1ec96a; }
-[data-xs-se="online"].xs-off { color: #ff3b30; }
-
 .serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
 
 .q {
@@ -224,7 +221,7 @@ h1 {
 
 .desk .cell .n { font-size: 12px; margin-bottom: 10px; }
 .desk .cell b { font-weight: 500; }
-.desk .cell .lista { display: block; white-space: pre-line; }
+.lista { display: block; white-space: pre-line; }
 
 .desk .player {
   left: 1302px;
@@ -265,7 +262,7 @@ html:not(.xs-mobile) .xs-marca {
 }
 
 .mob .foot.topo { top: 18px; }
-.mob .foot.baixo { bottom: 16px; }
+.mob .foot.baixo { bottom: 16px; padding-right: 40px; }
 
 .mob h1 {
   left: 16px;
@@ -322,6 +319,9 @@ html:not(.xs-mobile) .xs-marca {
 .mob .play svg { width: 16px; height: 16px; }
 .mob .player b { font-size: 13px; }
 .mob .player .info span { font-size: 10.5px; }
-/* No celular a marca fica no canto de cima, à direita, na faixa do topo */
-.xs-mobile { --xs-marca-topo-mobile: calc(6 * 100vw / 390); }
-.xs-mobile .xs-marca { right: calc(16 * 100vw / 390); }
+/* No celular a marca fica no canto de baixo, à direita */
+.xs-mobile .xs-marca {
+  top: auto;
+  bottom: calc(12 * 100vw / 390);
+  right: calc(16 * 100vw / 390);
+}

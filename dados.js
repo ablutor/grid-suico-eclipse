@@ -9,8 +9,6 @@ Xatspace.cliente({
   local: "Recife/Crema",
   gostos: ["Criar Galinhas", "Música", "Costura", "Ler"],
   pinterest: "ecll1pse",
-  xat: "ECL1",
-  online: false,
 
   fotos: {
     perfil: "perfil-1.jpg",
