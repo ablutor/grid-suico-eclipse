@@ -1,12 +1,15 @@
-/* Modelo 21 · Eclipse
-   Cores: original (vermelho), masculino (azul royal), feminino (rosa)
-   e feminino-2 (lilás). Este modelo não tem versões pastel. */
+/* Eclipse
+   Texto branco. A cor ativa (ponto, destaque e botão) é #474963. */
 
 :root,
-[data-cor="original"]   { --bg: #ebe9e4; --ink: #111; --ac: #e63312; }
-[data-cor="masculino"]  { --bg: #e7e9ec; --ink: #111; --ac: #1f4fd6; }
-[data-cor="feminino"]   { --bg: #f4e9ea; --ink: #111; --ac: #e83e8c; }
-[data-cor="feminino-2"] { --bg: #ece8f3; --ink: #111; --ac: #7b4fe0; }
+[data-cor="original"],
+[data-cor="masculino"],
+[data-cor="feminino"],
+[data-cor="feminino-2"] {
+  --bg: #ebe9e4;
+  --ink: #fff;
+  --ac: #474963;
+}
 
 /* Escala do palco desktop, para prender a marca d'água num ponto do desenho */
 :root {
@@ -104,8 +107,8 @@ h1 {
   position: absolute;
   display: flex;
   align-items: center;
-  background: var(--ink);
-  color: var(--bg);
+  background: #14151c;
+  color: #fff;
 }
 
 .play {
